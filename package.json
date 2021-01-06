@@ -8,7 +8,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/sazn1314/MyActions.git"
+        "url": "git+https://github.com/sazs34/MyActions.git"
     },
     "keywords": [
         "sign"
@@ -16,9 +16,9 @@
     "author": "sazs",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/sazn1314/MyActions/issues"
+        "url": "https://github.com/sazs34/MyActions/issues"
     },
-    "homepage": "https://github.com/sazn1314/MyActions#readme",
+    "homepage": "https://github.com/sazs34/MyActions#readme",
     "dependencies": {
         "request": "^2.88.2",
         "request-promise": "^4.2.5",
