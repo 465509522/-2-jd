@@ -18,20 +18,6 @@
 
     > **_您使用或者复制了本仓库且本人制作的任何脚本，则视为`已接受`此声明，请仔细阅读_**
 
-
-# 说明:
-
-鉴于 lxk0301 大佬的分支因为 fork 过多用于执行 actions 导致被删，为了防范于未然
-
-> 麻烦各位**不要 fork**`不要fork` _不要 fork_ 不要 fork [不要 fork](backup/reposync.md) ,通过下面的方法重新创建分支，同步代码
-
-[此方式亲测可行，请放心食用，点击查看如何使用 reposync 的方式进行同步代码](backup/reposync.md)
-
-[此方式亲测可行，请放心食用，点击查看如何使用 reposync 的方式进行同步代码](backup/reposync.md)
-
-[此方式亲测可行，请放心食用，点击查看如何使用 reposync 的方式进行同步代码](backup/reposync.md)
-
-
 ## 使用教程
 
 1. [按照这个教程进行 reposync](backup/reposync.md)
@@ -39,20 +25,7 @@
 3. 多条 cookie 用`&`隔开，支持无数条 cookie
 4. 前三步之后，点击一下右上角的 star（fork 左边那个），让 workflow 运行一次。
 
-上面四步搞定后就不用管了。
-
 更多Secrets配置[点击查看](backup/secrets.md)
 
 
 > 具体如何取 cookie 如何配置,可参考 [lxk0301 的获取京东Cookies教程](https://github.com/lxk0301/jd_scripts/blob/master/githubAction.md#%E4%BA%AC%E4%B8%9Ccookie)
-
-
-## 鸣谢
-
-[@NobyDa](https://github.com/NobyDa) - 京东每日签到
-
-[@lxk0301](https://github.com/lxk0301) - 京东系列其他签到
-
-[@yangtingxiao](https://github.com/yangtingxiao) - 京东排行榜，天天提额
-
-[@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版签到
