@@ -42,3 +42,8 @@ jobs:
                   JD_COOKIE: ${{ github.event.client_payload.JD_COOKIE || secrets.JD_COOKIE }}
                   JD_DEBUG: ${{ github.event.client_payload.JD_DEBUG || secrets.JD_DEBUG }}
                   DO_NOT_FORK: ${{ github.event.client_payload.DO_NOT_FORK || secrets.DO_NOT_FORK }}
+                  #GITHUB TOKEN
+                  ACTIONS_TRIGGER_TOKEN: ${{ secrets.ACTIONS_TRIGGER_TOKEN }}
+                  REPO: ${{ secrets.REPO }}
+                  GITHUBUSER: ${{ secrets.GITHUBUSER }}
+                  TRIGGER_KEYWORDS: ${{ secrets.TRIGGER_KEYWORDS }}
