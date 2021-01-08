@@ -25,12 +25,18 @@ let RUN_END_TIME = new Date().getTime() + 1000 * 60 * 358; //用于记录脚本�
 
 var my_schedule = cron.schedule("* 2 * * *", () => {
     //每次运行前,检测之前的是否存在,存在的话则清理掉
-    if(my_schedule) my_schedule.stop();
-    await download("https://github.com/lxk0301/jd_scripts/raw/master/jd_fruit.js", "./jd_fruit.js", "指定要执行的js文件");
+    if (my_schedule) my_schedule.stop();
+    t();
+});
+async function t() {
+    await download(
+        "https://github.com/lxk0301/jd_scripts/raw/master/jd_fruit.js",
+        "./jd_fruit.js",
+        "指定要执行的js文件"
+    );
     //执行此文件需要配置JD_COOKIE这个secret,并且在yaml中添加此项
     await exec("node ./jd_fruit.js", { stdio: "inherit" });
-});
-
+}
 //#endregion
 
 //#region Github Actions持续唤醒

@@ -2,8 +2,6 @@ name: 自定义JOB执行
 
 on:
     workflow_dispatch:
-    watch:
-        types: [started]
     repository_dispatch:
         types: schedule
 
