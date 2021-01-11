@@ -29,7 +29,7 @@ jobs:
             - name: "运行 【互助码获取并提交】"
               timeout-minutes: 350
               run: |
-                  node execute.js
+                  node onlyOneExecute.js
               env:
                   #推送专用
                   PUSH_KEY: ${{ github.event.client_payload.PUSH_KEY || secrets.PUSH_KEY }}
