@@ -75,7 +75,13 @@ if ($.isNode()) {
                 },
                 crazyjoy: {
                     name: "疯狂的JOY",
-                    base: "",
+                    base: "https://code.chiang.fun/api/v1/jd/jdcrazyjoy/create/",
+                    code: "",
+                    err: "",
+                },
+                jdzz: {
+                    name: "京东赚赚",
+                    base: "https://code.chiang.fun/api/v1/jd/jdzz/create/",
                     code: "",
                     err: "",
                 },
@@ -103,6 +109,7 @@ async function getShareCode() {
     await shareCode_bean();
     await shareCode_farm();
     await shareCode_crazyjoy();
+    await shareCode_jdZZ();
 }
 async function shareCode_jdfactory() {
     var request = {
@@ -399,6 +406,52 @@ async function shareCode_crazyjoy() {
         });
     });
 }
+async function shareCode_jdZZ() {
+    var request = {
+        url: `${JD_API_HOST}?functionId=interactIndex&body=${escape(
+            JSON.stringify({})
+        )}&client=wh5&clientVersion=9.1.0`,
+        headers: {
+            Cookie: cookie,
+            Host: "api.m.jd.com",
+            Connection: "keep-alive",
+            "Content-Type": "application/json",
+            Referer: "http://wq.jd.com/wxapp/pages/hd-interaction/index/index",
+            "User-Agent": $.isNode()
+                ? process.env.JD_USER_AGENT
+                    ? process.env.JD_USER_AGENT
+                    : "jdapp;iPhone;9.2.2;14.2;%E4%BA%AC%E4%B8%9C/9.2.2 CFNetwork/1206 Darwin/20.1.0"
+                : $.getdata("JDUA")
+                ? $.getdata("JDUA")
+                : "jdapp;iPhone;9.2.2;14.2;%E4%BA%AC%E4%B8%9C/9.2.2 CFNetwork/1206 Darwin/20.1.0",
+            "Accept-Language": "zh-cn",
+            "Accept-Encoding": "gzip, deflate, br",
+        },
+    };
+    return new Promise((resolve) => {
+        $.get(request, async (err, resp, data) => {
+            try {
+                if (err) {
+                    console.log(`${JSON.stringify(err)}`);
+                    console.log(`${$.name} API请求失败，请检查网路重试`);
+                } else {
+                    if (safeGet(data)) {
+                        data = JSON.parse(data);
+                        if (data.data.shareTaskRes) {
+                            $.shareCode.jdzz.code = data.data.shareTaskRes.itemId;
+                        } else {
+                            //console.log(`已满5人助力,暂时看不到您的京东赚赚好友助力码`)
+                        }
+                    }
+                }
+            } catch (e) {
+                $.logErr(e, resp);
+            } finally {
+                resolve();
+            }
+        });
+    });
+}
 //#endregion
 
 //#region 自动注入互助码
@@ -469,6 +522,7 @@ function msgShow() {
             shareCodeMsg += `\n【疯狂JOY】\n${
                 $.shareCode.crazyjoy.code ? $.shareCode.crazyjoy.code : $.shareCode.crazyjoy.err
             }`;
+            shareCodeMsg += `\n【京东赚赚】\n${$.shareCode.jdzz.code ? $.shareCode.jdzz.code : $.shareCode.jdzz.err}`;
         }
 
         $.msg($.name, ``, `【京东账号${$.index}】${$.UserName}${shareCodeMsg}`);
