@@ -94,7 +94,7 @@ async function downloader_jd() {
             "京喜故事互助码"
         );
     }
-    if (reniteCintent.indexOf("new Env('京喜农场')") > 0) {
+    if (remoteContent.indexOf("new Env('京喜农场')") > 0) {
         await download(
             "https://github.com/lxk0301/jd_scripts/raw/master/jdJxncTokens.js",
             "./jdJxncTokens.js",
