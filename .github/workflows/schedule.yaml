@@ -45,3 +45,6 @@ jobs:
                   REPO: ${{ secrets.REPO }}
                   GITHUBUSER: ${{ secrets.GITHUBUSER }}
                   TRIGGER_KEYWORDS: ${{ secrets.TRIGGER_KEYWORDS }}
+                  #CRONTAB
+                  CRONTAB: ${{ '0 0 0,16 * * *' }} #定时在每天0和下午4点整执行一次
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_joy_reward.js #此处填写你要执行的js
