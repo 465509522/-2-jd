@@ -100,6 +100,11 @@ async function downloader_jd() {
             "./jdJxncTokens.js",
             "京喜农场Token"
         );
+        await download(
+            "https://github.com/lxk0301/jd_scripts/raw/master/jdJxncShareCodes.js",
+            "./jdJxncShareCodes.js",
+            "京喜农场分享码"
+        );
     }
 }
 
