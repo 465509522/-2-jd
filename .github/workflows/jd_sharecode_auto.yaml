@@ -48,4 +48,4 @@ jobs:
                   JD_COOKIE: ${{ github.event.client_payload.JD_COOKIE || secrets.JD_COOKIE }}
                   JD_DEBUG: ${{ github.event.client_payload.JD_DEBUG || secrets.JD_DEBUG }}
                   DO_NOT_FORK: ${{ github.event.client_payload.DO_NOT_FORK || secrets.DO_NOT_FORK }}
-                  SYNCURL: ${{ github.event.client_payload.TESTURL || secrets.TESTURL }}
+                  SYNCURL: https://raw.githubusercontent.com/sazs34/MyActions/master/backup/jd_shareCode_auto.js
