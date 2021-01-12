@@ -43,3 +43,5 @@ jobs:
                   PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN || github.event.client_payload.PUSH_PLUS_TOKEN }}
                   PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER || github.event.client_payload.PUSH_PLUS_USER }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_jxnc.js
+                  #专属配置
+                  IGNORE_COOKIE_JXNC: ${{ github.event.client_payload.IGNORE_COOKIE_JXNC || secrets.IGNORE_COOKIE_JXNC }} #京喜农场禁用某些cookie的执行,因为通知太烦了呀,比如要禁用第2和第四个的执行,则填入[2,4]即可,包含中括号哦

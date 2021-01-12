@@ -28,8 +28,56 @@ async function inject_jd() {
             value: `outPutUrl = err ? './tmp/' : outPutUrl;`,
         });
     }
+    ignore_jd();
     await downloader_jd();
     await downloader_notify();
+}
+
+function ignore_jd() {
+    // 京喜农场禁用部分Cookie，以避免被频繁通知需要去种植啥的
+    if (process.env.IGNORE_COOKIE_JXNC) {
+        try {
+            var ignore_indexs = JSON.parse(process.env.IGNORE_COOKIE_JXNC);
+            var ignore_names = [];
+            ignore_indexs.forEach((it) => {
+                if (it == 1) {
+                    ignore_names.push("CookieJD");
+                } else {
+                    ignore_names.push("CookieJD" + it);
+                }
+            });
+            replacements.push({
+                key: "if (jdCookieNode[item]) {",
+                value: `if (jdCookieNode[item] && ${JSON.stringify(ignore_names)}.indexOf(item) == -1) {`,
+            });
+            console.log(`IGNORE_COOKIE_JXNC已生效，将为您禁用${ignore_names}`);
+        } catch (e) {
+            console.log("IGNORE_COOKIE_JXNC填写有误,不禁用任何Cookie");
+        }
+    }
+    // 京喜工厂禁用部分Cookie，以避免被频繁通知需要去种植啥的
+    if (process.env.IGNORE_COOKIE_JXGC) {
+        try {
+            var ignore_indexs = JSON.parse(process.env.IGNORE_COOKIE_JXGC);
+            var ignore_names = [];
+            ignore_indexs.forEach((it) => {
+                if (it == 1) {
+                    ignore_names.push("CookieJD");
+                } else {
+                    ignore_names.push("CookieJD" + it);
+                }
+            });
+            replacements.push({
+                key: "cookiesArr.push(jdCookieNode[item])",
+                value: `if (jdCookieNode[item] && ${JSON.stringify(
+                    ignore_names
+                )}.indexOf(item) == -1) cookiesArr.push(jdCookieNode[item])`,
+            });
+            console.log(`IGNORE_COOKIE_JXNC已生效，将为您禁用${ignore_names}`);
+        } catch (e) {
+            console.log("IGNORE_COOKIE_JXNC填写有误,不禁用任何Cookie");
+        }
+    }
 }
 
 function batchReplace() {
@@ -87,18 +135,21 @@ async function downloader_jd() {
             "京喜工厂互助码"
         );
     }
-    if (remoteContent.indexOf("jdJxStoryShareCodes") > 0) {
-        await download(
-            "https://github.com/lxk0301/jd_scripts/raw/master/jdJxStoryShareCodes.js",
-            "./jdJxStoryShareCodes.js",
-            "京喜故事互助码"
-        );
-    }
     if (reniteCintent.indexOf("new Env('京喜农场')") > 0) {
         await download(
             "https://github.com/lxk0301/jd_scripts/raw/master/jdJxncTokens.js",
             "./jdJxncTokens.js",
             "京喜农场Token"
+        );
+        await download(
+            "https://github.com/lxk0301/jd_scripts/raw/master/jdJxncShareCodes.js",
+            "./jdJxncShareCodes.js",
+            "京喜农场分享码"
+        );
+        await download(
+            "https://github.com/lxk0301/jd_scripts/raw/master/USER_AGENTS.js",
+            "./USER_AGENTS.js",
+            "USER_AGENTS"
         );
     }
 }
