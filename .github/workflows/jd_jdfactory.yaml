@@ -45,3 +45,4 @@ jobs:
                   FACTORAY_WANTPRODUCT_NAME: ${{ secrets.FACTORAY_WANTPRODUCT_NAME || github.event.client_payload.FACTORAY_WANTPRODUCT_NAME }}
                   DDFACTORY_SHARECODES: ${{ secrets.DDFACTORY_SHARECODES || github.event.client_payload.DDFACTORY_SHARECODES }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_jdfactory.js
+                  IGNORE_COOKIE_JDGC: ${{ github.event.client_payload.IGNORE_COOKIE_JDGC || secrets.IGNORE_COOKIE_JDGC }} #京东工厂禁用某些cookie的执行,因为通知太烦了呀,比如要禁用第2和第四个的执行,则填入[2,4]即可,包含中括号哦
