@@ -440,7 +440,7 @@ async function shareCode_jdZZ() {
                         if (data.data.shareTaskRes) {
                             $.shareCode.jdzz.code = data.data.shareTaskRes.itemId;
                         } else {
-                            //console.log(`已满5人助力,暂时看不到您的京东赚赚好友助力码`)
+                            $.shareCode.jdzz.err = `已满5人助力,暂时看不到您的京东赚赚好友助力码`;
                         }
                     }
                 }
@@ -459,10 +459,14 @@ async function autoInject() {
     var keys = Object.keys($.shareCode);
     for (var index in keys) {
         var request = $.shareCode[keys[index]];
-        if (request.base) {
+        if (request.base && request.code) {
             await httpRequest(request);
         } else {
-            $.result.push(`【${request.name}】⛔️\n${request.code ? request.code : request.err}`);
+            $.result.push(
+                `【${request.name}】⛔️\n${
+                    request.code ? request.code : request.err ? request.err : "未配置提交链接或未获取到互助码"
+                }`
+            );
         }
     }
 }
