@@ -31,6 +31,7 @@ async function inject_jd() {
     ignore_jd();
     await downloader_jd();
     await downloader_notify();
+    await downloader_user_agents();
 }
 
 function ignore_jd() {
@@ -225,6 +226,10 @@ async function downloader_jd() {
 
 async function downloader_notify() {
     await download("https://github.com/lxk0301/jd_scripts/raw/master/sendNotify.js", "./sendNotify.js", "统一通知");
+}
+
+async function downloader_user_agents() {
+    await download("https://github.com/lxk0301/jd_scripts/raw/master/USER_AGENTS.js", "./USER_AGENTS.js", "云端UA");
 }
 
 async function download(url, path, target) {
