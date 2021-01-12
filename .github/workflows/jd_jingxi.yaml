@@ -1,4 +1,4 @@
-name: 京喜签到
+name: Sunert-京喜签到
 
 on:
     workflow_dispatch:
@@ -23,7 +23,7 @@ jobs:
             - name: npm install
               run: |
                   npm install
-            - name: "运行【京喜每日签到】"
+            - name: "运行【Sunert-京喜签到】"
               run: |
                   node onlyOneExecute.js
               env:
