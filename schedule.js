@@ -49,6 +49,8 @@ jobs:
                   IGOT_PUSH_KEY: ${{ github.event.client_payload.IGOT_PUSH_KEY || secrets.IGOT_PUSH_KEY }}
                   QQ_SKEY: ${{ github.event.client_payload.QQ_SKEY || secrets.QQ_SKEY }}
                   QQ_MODE: ${{ github.event.client_payload.QQ_MODE || secrets.QQ_MODE }}
+                  QYWX_KEY: ${{ github.event.client_payload.QYWX_KEY || secrets.QYWX_KEY }}
+                  QYWX_AM: ${{ github.event.client_payload.QYWX_AM || secrets.QYWX_AM }}
                   PUSH_PLUS_TOKEN: ${{ github.event.client_payload.PUSH_PLUS_TOKEN || secrets.PUSH_PLUS_TOKEN }}
                   PUSH_PLUS_USER: ${{ github.event.client_payload.PUSH_PLUS_USER || secrets.PUSH_PLUS_USER }}
                   #通用配置
